@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+MVP для Проекта: "Хранилище Фильмов"
 
-## Getting Started
+* Архитектура проекта
 
-First, run the development server:
+ 	+	Технологический стек
+		- React
+		- Material UI
+		- NextJS
+		- Redux
+		- TypeScript
+		- Tailwind / CSS
+		- Заглушка для бека, например json-server
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+	+ Общая структура для проекта 
+		- pages/: директория для страниц NextJS
+		- components/: директория для переиспользуемых компонентов 
+		- layouts/: директория для шаблонов страниц(тех частей, которые присутстствуют повсеместно)
+		- store/: директория для Redux состояний и срезов
+		- services/: Сюда можно попробовать добавить утилиты по работе с json-server
+		- styles/: стили
+		- utils/: директория для вспомогательных функций
+* Маршрутизация и странцы
+	- "/" - главная страница "MyCinemaPage"
+	- "/search" - cтраница поиска "SearchPage"
+	- "/movie/:id" - страница фильма с динамически подставляемым id - MovieDetailsPage
+	- "/login-page" - страница для регистрации/логина
+	- "/profile" -страница пользователя
+	- "/settings" - страница с настройками
+	- "/favorite-movies" - страница куда юзер может откладывать фильмы на потом или оставлять любимые фильмы
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Компоненты 
+		- Sidebar
+		- MainPage
+		- SearchPage
+		- MovieList
+		- MovieDetailsPage
+* Что должен уметь сделать пользователь
+	- Переключение между вкладками в сайдбаре.
+			Ведем на соответствующий рут, меняется урл
+	- Залогиниться/ Разлогиниться
+	- Пускать пользователя в приложение только пол ЛОГИНУ, убрать возможность доступа к эндпоинтам напрямую без авторизации(ограничить руты)
+	- Скролить карусель на главном экране слева направо, переключаться между табами внутри экрана и чтобы происходил ререндер. Если фильмы отсутствуют - показывать сообщение заглушку
+	- Продумать лоадер для асинхронной загрузки всех фильмов и только потом отображать страницу юзеру
+	- Менять информацию о себе в профиле(сделать минимальные данные: возраст, жанр и тд)
+	- Сохранять фильмы в избранные и отдельно в отложенные
+	- Включить трейлер/ фильм( реализовать на примере запуска любого рандомного фильма как будто в плеере). Можно поискать апишку с трейлерами, попробовать воспользоваться https://api.kinocheck.com/
+	- Поставить трейлер/фильм на паузу и продолжить с того же момента
+	- Запоминать сколько юзер просмотрел видео и при перезагрузке показывать ему с того же места. Прогресс просмотра реализовать с помощью какого-нибудь прогресс бара
+	- При разлогине выбрасывать пользователя на экран регистрации
+	- Управлять громкостью: + - mute, unmute
+	- Поиск по фильмам через отдельную страницу, включая историю поиска и последние найденные(можно подумать над этим)
+	- Выводить ошибки в случае если что-то пошло не так(например, если фильм не найден или)
+	- Возможность перехода между текущей и предыдущей вкладкой через кнопку назад
+	- При желание сделать theme toggle для переключения темы приложения
+	
