@@ -1,3 +1,3 @@
 export default function Auth() {
-    return <div>Auth</div>
+    return <div className='text-black'>Auth</div>
 }
